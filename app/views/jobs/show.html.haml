@@ -1,14 +1,19 @@
 %p#notice= notice
 
-%p
+%p#job(data-id="#{@job.id}")
   %b Title:
   = @job.title
 %p
   %b Command:
-  = @job.command
+  %pre
+    = preserve do
+      = @job.command
+  = link_to 'Run!', run_job_path(@job), class: 'btn btn-danger'
 %p
   %b Output:
-  = @job.output
+  %pre#output
+    = preserve do
+      = @job.output
 %p
   %b User:
   = @job.user
@@ -28,6 +33,45 @@
   %b Delayed job:
   = @job.delayed_job_id
 
+
 = link_to 'Edit', edit_job_path(@job)
 \|
 = link_to 'Back', jobs_path
+
+:javascript
+
+  $( function() {
+    var job_id = $("#job").attr("data-id");
+    if (!job_finished(job_id)) {
+      //alert('agendado 1');
+      setTimeout(updateOutput,1000);
+    }
+  });
+
+  function updateOutput() {
+    var job_id = $("#job").attr("data-id");
+    $.ajax("/jobs/" + job_id + "/job_output", {
+      success: function(response) {
+          //alert(response);
+          $('#output').html(response);
+        },
+      async: false
+    })
+    if (!job_finished(job_id)) {
+      //alert('agendado +1');
+      setTimeout(updateOutput,1000);
+    } else {
+      window.location.reload();
+    }
+  }
+
+  function job_finished(job_id) {
+    var finished = false
+    $.ajax("/jobs/" + job_id + "/job_finished", {
+      success: function(response) {
+          finished = (response == 'true');
+        },
+      async: false
+    })
+    return finished;
+  }

@@ -6,6 +6,8 @@ class Job < ActiveRecord::Base
     cmd = self.command
     self.output = ''
     self.started_at = Time.now
+    self.finished_at = nil
+    self.save
     IO.popen(cmd) do | cmd_io |
       until cmd_io.eof?
         out_line = cmd_io.readline
@@ -19,8 +21,8 @@ class Job < ActiveRecord::Base
     self.success
   end
 
-  def self.run(jon_id)
-    job = Joob.find(job_id)
+  def self.run(job_id)
+    job = Job.find(job_id)
     job.run
   end
 
@@ -30,6 +32,20 @@ class Job < ActiveRecord::Base
     job.save
     job.run
     job.success
+  end
+
+  def self.output(job_id)
+    Job.find(job_id).output rescue nil
+  end
+
+  def self.finished?(job_id)
+    Job.find(job_id).finished_at.present?
+  end
+
+  def reset
+    self.finished_at = nil
+    self.output = nil
+    self.save
   end
 
 end
