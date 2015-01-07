@@ -14,7 +14,7 @@
       %th Actions
     %tr
       %td Portal
-      %td.badge Ok
+      %td.label.label-success Ok
       %td 2
       %td 60%
       %td
@@ -22,14 +22,14 @@
         = link_to '-', '#', class: 'btn btn-primary btn-xs'
     %tr
       %td MailsScanner
-      %td.badge Ok
+      %td.label.label-success Ok
       %td 1
       %td uso: 35%
       %td
         = link_to 'Limpar', '#', class: 'btn btn-primary btn-xs'
     %tr
       %td DelayedJob-Misc
-      %td.badge Ok
+      %td.label.label-success Ok
       %td 0
       %td 0 jobs
       %td
@@ -37,7 +37,7 @@
         = link_to '-', '#', class: 'btn btn-primary btn-xs'
     %tr
       %td DelayedJob-Download
-      %td.badge Ok
+      %td.label.label-success Ok
       %td 3
       %td 2340
       %td
@@ -45,7 +45,7 @@
         = link_to '-', '#', class: 'btn btn-primary btn-xs'
     %tr
       %td DelayedJob-Validacao
-      %td.badge Ok
+      %td.label.label-success Ok
       %td 2
       %td 1340
       %td
@@ -53,20 +53,20 @@
         = link_to '-', '#', class: 'btn btn-primary btn-xs'
     %tr
       %td MySQL
-      %td.badge Ok
+      %td.label.label-success Ok
       %td 1
       %td 120Gb Free
       %td
         = link_to 'Backup', '#', class: 'btn btn-primary btn-xs'
     %tr
       %td S3-uploads
-      %td.badge Ok
+      %td.label.label-success Ok
       %td -
       %td 2340 arqs
       %td
     %tr
       %td S3-xmls
-      %td.badge Ok
+      %td.label.label-danger Erro
       %td -
       %td 2.344.456 arqs
       %td
@@ -75,3 +75,5 @@
   %h3 Info:
   %li Monthly Cost: US$ 1.345
   %li Availability: 97.8 % (last 30 days)
+  %hr
+  %p= link_to 'Excluir', '#', class: 'btn btn-danger btn-xs', confirm:'Are you sure?', title: 'Apaga todos componentes)'

@@ -36,6 +36,8 @@ class InstancesController < ApplicationController
     respond_with(@instance)
   end
 
+
+
   private
     def set_instance
       @instance = Instance.find(params[:id])

@@ -1,0 +1,33 @@
+%p#notice= notice
+
+%p
+  %b Title:
+  = @job.title
+%p
+  %b Command:
+  = @job.command
+%p
+  %b Output:
+  = @job.output
+%p
+  %b User:
+  = @job.user
+%p
+  %b Instance component:
+  = @job.instance_component
+%p
+  %b Success:
+  = @job.success
+%p
+  %b Started at:
+  = @job.started_at
+%p
+  %b Finished at:
+  = @job.finished_at
+%p
+  %b Delayed job:
+  = @job.delayed_job_id
+
+= link_to 'Edit', edit_job_path(@job)
+\|
+= link_to 'Back', jobs_path

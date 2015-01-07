@@ -1,0 +1,16 @@
+= simple_form_for(@job) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :title
+    = f.input :command
+    = f.input :output
+    = f.association :user
+    = f.association :instance_component
+    = f.input :success
+    = f.input :started_at
+    = f.input :finished_at
+    = f.input :delayed_job_id
+
+  .form-actions
+    = f.button :submit
