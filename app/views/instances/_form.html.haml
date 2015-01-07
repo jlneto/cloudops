@@ -1,0 +1,12 @@
+= simple_form_for(@instance) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.association :app
+    = f.input :name
+    = f.input :description
+    = f.input :parameters
+    = f.input :tags
+
+  .form-actions
+    = f.button :submit

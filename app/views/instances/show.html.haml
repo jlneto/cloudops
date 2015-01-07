@@ -1,0 +1,21 @@
+%p#notice= notice
+
+%p
+  %b App:
+  = @instance.app
+%p
+  %b Name:
+  = @instance.name
+%p
+  %b Description:
+  = @instance.description
+%p
+  %b Parameters:
+  = @instance.parameters
+%p
+  %b Tags:
+  = @instance.tags
+
+= link_to 'Edit', edit_instance_path(@instance)
+\|
+= link_to 'Back', instances_path

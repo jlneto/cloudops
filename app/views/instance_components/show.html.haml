@@ -1,0 +1,24 @@
+%p#notice= notice
+
+%p
+  %b Instance:
+  = @instance_component.instance
+%p
+  %b App component:
+  = @instance_component.app_component
+%p
+  %b Name:
+  = @instance_component.name
+%p
+  %b Template:
+  = @instance_component.template
+%p
+  %b Arn:
+  = @instance_component.arn
+%p
+  %b Address:
+  = @instance_component.address
+
+= link_to 'Edit', edit_instance_component_path(@instance_component)
+\|
+= link_to 'Back', instance_components_path

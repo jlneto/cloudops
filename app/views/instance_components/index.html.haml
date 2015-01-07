@@ -1,0 +1,31 @@
+%h1 Listing instance_components
+
+%table
+  %thead
+    %tr
+      %th Instance
+      %th App component
+      %th Name
+      %th Template
+      %th Arn
+      %th Address
+      %th
+      %th
+      %th
+      
+  %tbody
+    - @instance_components.each do |instance_component|
+      %tr
+        %td= instance_component.instance
+        %td= instance_component.app_component
+        %td= instance_component.name
+        %td= instance_component.template
+        %td= instance_component.arn
+        %td= instance_component.address
+        %td= link_to 'Show', instance_component
+        %td= link_to 'Edit', edit_instance_component_path(instance_component)
+        %td= link_to 'Destroy', instance_component, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Instance component', new_instance_component_path

@@ -1,0 +1,2 @@
+module InstanceComponentsHelper
+end

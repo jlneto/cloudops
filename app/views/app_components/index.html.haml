@@ -1,0 +1,31 @@
+%h1 Listing app_components
+
+%table
+  %thead
+    %tr
+      %th App
+      %th Name
+      %th Description
+      %th Type
+      %th Template
+      %th Instructions
+      %th
+      %th
+      %th
+      
+  %tbody
+    - @app_components.each do |app_component|
+      %tr
+        %td= app_component.app
+        %td= app_component.name
+        %td= app_component.description
+        %td= app_component.type
+        %td= app_component.template
+        %td= app_component.instructions
+        %td= link_to 'Show', app_component
+        %td= link_to 'Edit', edit_app_component_path(app_component)
+        %td= link_to 'Destroy', app_component, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New App component', new_app_component_path

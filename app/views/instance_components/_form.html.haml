@@ -1,0 +1,13 @@
+= simple_form_for(@instance_component) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.association :instance
+    = f.association :app_component
+    = f.input :name
+    = f.input :template
+    = f.input :arn
+    = f.input :address
+
+  .form-actions
+    = f.button :submit

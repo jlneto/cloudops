@@ -1,0 +1,24 @@
+%p#notice= notice
+
+%p
+  %b App:
+  = @app_component.app
+%p
+  %b Name:
+  = @app_component.name
+%p
+  %b Description:
+  = @app_component.description
+%p
+  %b Type:
+  = @app_component.type
+%p
+  %b Template:
+  = @app_component.template
+%p
+  %b Instructions:
+  = @app_component.instructions
+
+= link_to 'Edit', edit_app_component_path(@app_component)
+\|
+= link_to 'Back', app_components_path

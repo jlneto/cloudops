@@ -1,0 +1,76 @@
+%h2= instance.name
+%h4 Actions:
+%p git: /taxweb/ccdeaws (master)
+= link_to 'Atualizar (todos componentes)', class: 'btn btn-primary'
+
+%h4 Components:
+%table
+  %tr
+    %td Component
+    %td Status
+    %td Servers
+    %td Health
+    %td Actions
+  %tr
+    %td Portal
+    %td Ok
+    %td 2
+    %td 60%
+    %td
+      = link_to '+'
+      = link_to '-'
+  %tr
+    %td MailsScanner
+    %td Ok
+    %td 1
+    %td uso: 35%
+    %td
+      = link_to 'Limpar'
+  %tr
+    %td DelayedJob-Misc
+    %td Ok
+    %td 0
+    %td 0 jobs
+    %td
+      = link_to '+'
+      = link_to '-'
+  %tr
+    %td DelayedJob-Download
+    %td Ok
+    %td 3
+    %td 2340
+    %td
+      = link_to '+'
+      = link_to '-'
+  %tr
+    %td DelayedJob-Validacao
+    %td Ok
+    %td 2
+    %td 1340
+    %td
+      = link_to '+'
+      = link_to '-'
+  %tr
+    %td MySQL
+    %td Ok
+    %td 1
+    %td 120Gb Free
+    %td
+      = link_to 'Backup'
+  %tr
+    %td S3-uploads
+    %td Ok
+    %td -
+    %td 2340 arqs
+    %td
+  %tr
+    %td S3-xmls
+    %td Ok
+    %td -
+    %td 2.344.456 arqs
+    %td
+
+
+%h3 Info:
+%li Monthly Cost: US$ 1.345
+%li Availability: 97.8 % (last 30 days)

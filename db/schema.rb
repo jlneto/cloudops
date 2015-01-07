@@ -11,7 +11,54 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150106174525) do
+ActiveRecord::Schema.define(version: 20150106181427) do
+
+  create_table "app_components", force: :cascade do |t|
+    t.integer  "app_id",       limit: 4
+    t.string   "name",         limit: 255
+    t.string   "description",  limit: 255
+    t.string   "type",         limit: 255
+    t.text     "template",     limit: 65535
+    t.text     "instructions", limit: 65535
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+  end
+
+  add_index "app_components", ["app_id"], name: "index_app_components_on_app_id", using: :btree
+
+  create_table "apps", force: :cascade do |t|
+    t.string   "name",        limit: 255
+    t.string   "description", limit: 255
+    t.text     "template",    limit: 65535
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+  end
+
+  create_table "instance_components", force: :cascade do |t|
+    t.integer  "instance_id",      limit: 4
+    t.integer  "app_component_id", limit: 4
+    t.string   "name",             limit: 255
+    t.text     "template",         limit: 65535
+    t.string   "arn",              limit: 255
+    t.string   "address",          limit: 255
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
+  end
+
+  add_index "instance_components", ["app_component_id"], name: "index_instance_components_on_app_component_id", using: :btree
+  add_index "instance_components", ["instance_id"], name: "index_instance_components_on_instance_id", using: :btree
+
+  create_table "instances", force: :cascade do |t|
+    t.integer  "app_id",      limit: 4
+    t.string   "name",        limit: 255
+    t.string   "description", limit: 255
+    t.text     "parameters",  limit: 65535
+    t.text     "tags",        limit: 65535
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+  end
+
+  add_index "instances", ["app_id"], name: "index_instances_on_app_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  limit: 255, default: "", null: false
@@ -33,4 +80,8 @@ ActiveRecord::Schema.define(version: 20150106174525) do
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
+  add_foreign_key "app_components", "apps"
+  add_foreign_key "instance_components", "app_components"
+  add_foreign_key "instance_components", "instances"
+  add_foreign_key "instances", "apps"
 end

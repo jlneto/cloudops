@@ -1,5 +1,15 @@
 Rails.application.routes.draw do
-  root to: 'visitors#index'
+  get 'home/index'
+
+  resources :app_components
+
+  resources :instance_components
+
+  resources :instances
+
+  resources :apps
+
+  root to: 'home#index'
   devise_for :users
   resources :users
 end
