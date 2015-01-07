@@ -1,5 +1,16 @@
 %h4 Operações Taxweb
 
-- Instance.all.each do |instance|
-  = render instance
+.isotope
+  - Instance.all.each do |instance|
+    .element-item
+      = render instance
 
+:javascript
+  $(document).ready( function() {
+    // init Isotope
+    var $container = $('.isotope').isotope({
+        itemSelector: '.element-item',
+        layoutMode: 'fitRows',
+        getSortData: {name: '.name'}
+        });
+  });

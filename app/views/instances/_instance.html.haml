@@ -1,76 +1,77 @@
-%h2= instance.name
-%h4 Actions:
-%p git: /taxweb/ccdeaws (master)
-= link_to 'Atualizar (todos componentes)', class: 'btn btn-primary'
+.instance_board
+  %h2.name= instance.name
+  %h4 Actions:
+  %p git: /taxweb/ccdeaws (master)
+  = link_to 'Atualizar', '#', class: 'btn btn-primary', title: 'Atualiza todos componentes)'
 
-%h4 Components:
-%table
-  %tr
-    %td Component
-    %td Status
-    %td Servers
-    %td Health
-    %td Actions
-  %tr
-    %td Portal
-    %td Ok
-    %td 2
-    %td 60%
-    %td
-      = link_to '+'
-      = link_to '-'
-  %tr
-    %td MailsScanner
-    %td Ok
-    %td 1
-    %td uso: 35%
-    %td
-      = link_to 'Limpar'
-  %tr
-    %td DelayedJob-Misc
-    %td Ok
-    %td 0
-    %td 0 jobs
-    %td
-      = link_to '+'
-      = link_to '-'
-  %tr
-    %td DelayedJob-Download
-    %td Ok
-    %td 3
-    %td 2340
-    %td
-      = link_to '+'
-      = link_to '-'
-  %tr
-    %td DelayedJob-Validacao
-    %td Ok
-    %td 2
-    %td 1340
-    %td
-      = link_to '+'
-      = link_to '-'
-  %tr
-    %td MySQL
-    %td Ok
-    %td 1
-    %td 120Gb Free
-    %td
-      = link_to 'Backup'
-  %tr
-    %td S3-uploads
-    %td Ok
-    %td -
-    %td 2340 arqs
-    %td
-  %tr
-    %td S3-xmls
-    %td Ok
-    %td -
-    %td 2.344.456 arqs
-    %td
+  %h4 Components:
+  %table
+    %tr
+      %th Component
+      %th Status
+      %th Servers
+      %th Health
+      %th Actions
+    %tr
+      %td Portal
+      %td.badge Ok
+      %td 2
+      %td 60%
+      %td
+        = link_to '+', '#', class: 'btn btn-primary btn-xs'
+        = link_to '-', '#', class: 'btn btn-primary btn-xs'
+    %tr
+      %td MailsScanner
+      %td.badge Ok
+      %td 1
+      %td uso: 35%
+      %td
+        = link_to 'Limpar', '#', class: 'btn btn-primary btn-xs'
+    %tr
+      %td DelayedJob-Misc
+      %td.badge Ok
+      %td 0
+      %td 0 jobs
+      %td
+        = link_to '+', '#', class: 'btn btn-primary btn-xs'
+        = link_to '-', '#', class: 'btn btn-primary btn-xs'
+    %tr
+      %td DelayedJob-Download
+      %td.badge Ok
+      %td 3
+      %td 2340
+      %td
+        = link_to '+', '#', class: 'btn btn-primary btn-xs'
+        = link_to '-', '#', class: 'btn btn-primary btn-xs'
+    %tr
+      %td DelayedJob-Validacao
+      %td.badge Ok
+      %td 2
+      %td 1340
+      %td
+        = link_to '+', '#', class: 'btn btn-primary btn-xs'
+        = link_to '-', '#', class: 'btn btn-primary btn-xs'
+    %tr
+      %td MySQL
+      %td.badge Ok
+      %td 1
+      %td 120Gb Free
+      %td
+        = link_to 'Backup', '#', class: 'btn btn-primary btn-xs'
+    %tr
+      %td S3-uploads
+      %td.badge Ok
+      %td -
+      %td 2340 arqs
+      %td
+    %tr
+      %td S3-xmls
+      %td.badge Ok
+      %td -
+      %td 2.344.456 arqs
+      %td
 
 
-%h3 Info:
-%li Monthly Cost: US$ 1.345
-%li Availability: 97.8 % (last 30 days)
+  %h3 Info:
+  %li Monthly Cost: US$ 1.345
+  %li Availability: 97.8 % (last 30 days)
