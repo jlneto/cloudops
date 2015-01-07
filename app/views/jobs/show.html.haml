@@ -12,7 +12,7 @@
     %pre#output
       = preserve do
         = @job.output
-  %p
+  %p#end_of_output
     %b Started at:
     = @job.started_at
   %p
@@ -28,7 +28,6 @@
   $( function() {
     var job_id = $("#job").attr("data-id");
     if (!job_finished(job_id)) {
-      //alert('agendado 1');
       setTimeout(updateOutput,1000);
     }
   });
@@ -37,13 +36,12 @@
     var job_id = $("#job").attr("data-id");
     $.ajax("/jobs/" + job_id + "/job_output", {
       success: function(response) {
-          //alert(response);
           $('#output').html(response);
         },
       async: false
     })
+    scroll_to_anchor('end_of_output');
     if (!job_finished(job_id)) {
-      //alert('agendado +1');
       setTimeout(updateOutput,1000);
     } else {
       window.location.reload();
@@ -59,4 +57,9 @@
       async: false
     })
     return finished;
+  }
+
+  function scroll_to_anchor(anchor_id){
+    var tag = $("#"+anchor_id+"");
+    $('html,body').animate({scrollTop: tag.offset().top},'slow');
   }
