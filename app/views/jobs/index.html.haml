@@ -1,17 +1,12 @@
 %h1 Listing jobs
 
-%table
+%table.table
   %thead
     %tr
-      %th Title
       %th Command
-      %th Output
-      %th User
-      %th Instance component
       %th Success
       %th Started at
       %th Finished at
-      %th Delayed job
       %th
       %th
       %th
@@ -19,15 +14,13 @@
   %tbody
     - @jobs.each do |job|
       %tr
-        %td= job.title
-        %td= job.command
-        %td= job.output
-        %td= job.user
-        %td= job.instance_component
+        %td
+          %pre
+            = preserve do
+              = job.command
         %td= job.success
         %td= job.started_at
         %td= job.finished_at
-        %td= job.delayed_job_id
         %td= link_to 'Show', job
         %td= link_to 'Edit', edit_job_path(job)
         %td= link_to 'Destroy', job, :method => :delete, :data => { :confirm => 'Are you sure?' }

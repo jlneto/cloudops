@@ -16,6 +16,10 @@ class Job < ActiveRecord::Base
       end
     end
     self.success = $?.success?
+  rescue Exception => e
+    self.output = e.message
+    self.success = false
+  ensure
     self.finished_at = Time.now
     self.save
     self.success

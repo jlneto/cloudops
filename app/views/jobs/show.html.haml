@@ -1,38 +1,23 @@
 %p#notice= notice
 
-%p#job(data-id="#{@job.id}")
-  %b Title:
-  = @job.title
-%p
-  %b Command:
-  %pre
-    = preserve do
-      = @job.command
-  = link_to 'Run!', run_job_path(@job), class: 'btn btn-danger'
-%p
-  %b Output:
-  %pre#output
-    = preserve do
-      = @job.output
-%p
-  %b User:
-  = @job.user
-%p
-  %b Instance component:
-  = @job.instance_component
-%p
-  %b Success:
-  = @job.success
-%p
-  %b Started at:
-  = @job.started_at
-%p
-  %b Finished at:
-  = @job.finished_at
-%p
-  %b Delayed job:
-  = @job.delayed_job_id
-
+#job(data-id="#{@job.id}")
+  %p
+    %b Command:
+    %pre
+      = preserve do
+        = @job.command
+    = link_to 'Run!', run_job_path(@job), class: 'btn btn-danger'
+  %p
+    %b Output:
+    %pre#output
+      = preserve do
+        = @job.output
+  %p
+    %b Started at:
+    = @job.started_at
+  %p
+    %b Finished at:
+    = @job.finished_at
 
 = link_to 'Edit', edit_job_path(@job)
 \|
