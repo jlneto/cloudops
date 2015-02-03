@@ -42,6 +42,6 @@ class AppsController < ApplicationController
     end
 
     def app_params
-      params.require(:app).permit(:name, :description, :template)
+      params.require(:app).permit(:name, :description, :template, :github_url)
     end
 end

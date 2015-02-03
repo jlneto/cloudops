@@ -1,6 +1,6 @@
 %h1 Listing app_components
 
-%table
+%table.table
   %thead
     %tr
       %th App
@@ -22,10 +22,10 @@
         %td= app_component.type
         %td= app_component.template
         %td= app_component.instructions
-        %td= link_to 'Show', app_component
-        %td= link_to 'Edit', edit_app_component_path(app_component)
-        %td= link_to 'Destroy', app_component, :method => :delete, :data => { :confirm => 'Are you sure?' }
+        %td= link_to 'Show', app_app_component_path(app_component.app,app_component )
+        %td= link_to 'Edit', edit_app_app_component_path( app_component.app,app_component )
+        %td= link_to 'Destroy', app_app_component_path( app_component.app,app_component ), :method => :delete, :data => { :confirm => 'Are you sure?' }
 
 %br
 
-= link_to 'New App component', new_app_component_path
+= link_to 'New App component', new_app_app_component_path(@app)

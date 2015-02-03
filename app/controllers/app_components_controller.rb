@@ -4,8 +4,9 @@ class AppComponentsController < ApplicationController
   respond_to :html
 
   def index
-    @app_components = AppComponent.all
-    respond_with(@app_components)
+    @app = App.find(params[:app_id])
+    @app_components = @app.app_components.all
+    respond_with(@app, @app_components)
   end
 
   def show
@@ -13,6 +14,7 @@ class AppComponentsController < ApplicationController
   end
 
   def new
+    @app = App.find(params[:app_id])
     @app_component = AppComponent.new
     respond_with(@app_component)
   end
@@ -23,7 +25,8 @@ class AppComponentsController < ApplicationController
   def create
     @app_component = AppComponent.new(app_component_params)
     @app_component.save
-    respond_with(@app_component)
+    @app =@app_component.app
+    respond_with(@app, @app_component)
   end
 
   def update
@@ -33,11 +36,12 @@ class AppComponentsController < ApplicationController
 
   def destroy
     @app_component.destroy
-    respond_with(@app_component)
+    respond_with(@app, @app_component)
   end
 
   private
     def set_app_component
+      @app = App.find(params[:app_id])
       @app_component = AppComponent.find(params[:id])
     end
 

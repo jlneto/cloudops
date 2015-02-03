@@ -1,13 +1,18 @@
-= simple_form_for(@app_component) do |f|
+%h4
+  App:
+  = @app.name
+= simple_form_for([@app, @app_component])  do |f|
   = f.error_notification
 
   .form-inputs
-    = f.association :app
+    = f.input :app_id, :as => :hidden, :input_html => { value: @app.id }
     = f.input :name
     = f.input :description
-    = f.input :type
     = f.input :template
     = f.input :instructions
 
   .form-actions
     = f.button :submit
+
+
+= @app.inspect

@@ -1,12 +1,17 @@
 Rails.application.routes.draw do
 
+  get 'ccde/setup'
+  get 'ccde/status'
+  get 'ccde/update'
   get 'home/index'
 
-  resources :apps
-  resources :app_components
+  resources :apps do
+    resources :app_components
+  end
 
-  resources :instances
-  resources :instance_components
+  resources :instances do
+    resources :instance_components
+  end
 
   resources :jobs do
     get :run, :on => :member
@@ -15,7 +20,7 @@ Rails.application.routes.draw do
     get :job_finished, :on => :member
   end
 
-  root to: 'home#index'
+  root to: 'ccde#status'
 
   devise_for :users
   resources :users

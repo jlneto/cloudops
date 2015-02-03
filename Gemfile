@@ -20,6 +20,10 @@ gem 'haml-rails'
 gem 'mysql2'
 gem 'puma'
 gem 'simple_form'
+
+# Monitoramento de caixas postais
+gem 'ruby-gmail'
+
 group :development do
   gem 'better_errors'
   gem 'binding_of_caller', :platforms=>[:mri_21]
@@ -35,6 +39,7 @@ group :development do
   gem 'rails_layout'
   gem 'spring-commands-rspec'
 end
+
 group :development, :test do
   gem 'factory_girl_rails'
   gem 'faker'

@@ -7,9 +7,32 @@
   %b Description:
   = @app.description
 %p
+  %b Repositório no github:
+  = @app.github_url
+%p
   %b Template:
   = @app.template
 
 = link_to 'Edit', edit_app_path(@app)
 \|
 = link_to 'Back', apps_path
+
+
+%h2 Components
+= link_to 'New App component', new_app_app_component_path(@app)
+
+%table.table
+  %tr
+    %th Name
+    %th Description
+    %th Actions
+  - @app.app_components.each do |app_component|
+    %tr
+      %td= app_component.name
+      %td= app_component.description
+      %td
+        = link_to 'Edit', edit_app_app_component_path(@app, app_component)
+        |
+        = link_to 'Destroy', app_app_component_path(@app, app_component), :method => :delete, :data => { :confirm => 'Are you sure?' }
+%br
+
