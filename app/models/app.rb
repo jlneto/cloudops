@@ -22,21 +22,27 @@ class App < ActiveRecord::Base
   end
 
   def setup
-    cmd = Command.new(self.name)
-    cmd.add "mkdir #{self.full_path}; cd #{self.full_path}"
-    cmd.add "rvm use ruby-#{self.ruby_version}@#{self.to_s} --ruby-version --create"
-    cmd.add "git clone #{self.github_url}"
+    cmd = Command.new(self, false)
+    cmd.add "mkdir -p #{self.full_path}"
+    cmd.add "cd #{self.full_path}"
+    cmd.add "rvm use ruby-#{self.ruby_version}@#{self.to_s.downcase} --ruby-version --create"
+    cmd.add "git clone #{self.github_url} ."
     cmd.run
     cmd
   end
 
-  def status(env = 'production')
-    cmd = Command.new(self.name)
+  def status(env = 'staging')
+    cmd = Command.new(self)
     cmd.add "./app_list_all_instances_status.sh #{env}"
     cmd.run
-    cmd
   end
 
+  def update(env = 'staging')
+    cmd = Command.new(self)
+    cmd.add "./app_pack.sh #{env}"
+    cmd.add "./app_deploy.sh #{env}"
+    cmd.run
+  end
 
 
 end

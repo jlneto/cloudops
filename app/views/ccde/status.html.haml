@@ -2,9 +2,10 @@
 
 - if @app.ok?
   = link_to 'Update', ccde_update_path
+  %pre= @status
 - else
   %p
     O Ambiente desse aplicativo ainda não foi criado.<br/>
     Clique no link de setup abaixo para criar a sua área de trabalho nesse servidor:
   %p= @app.full_path
-  %p= link_to 'Setup', ccde_setup_path, confirm: 'Confirma a criação da área de trabalho desse aplicativo?'
+  %p= link_to 'Setup', ccde_setup_path, data: { confirm: 'Confirma a criação da área de trabalho desse aplicativo?' }

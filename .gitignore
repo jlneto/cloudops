@@ -78,3 +78,5 @@ pickle-email-*.html
 .powenv
 workdir
 public/assets
+
+workarea

@@ -10,7 +10,7 @@ class CcdeController < ApplicationController
     ccde = App.find_by_name('ccde')
     result = ccde.setup
     flash[:notice] = result
-    redirect_to action: :status
+    redirect_to ccde_status_path
   end
 
   def status
@@ -21,10 +21,6 @@ class CcdeController < ApplicationController
   end
 
   def update
-    # vai para o diretorio de trabalho desse app
-    # git checkout no branch do ambiente
-    # git pull
-    # app_pack.sh rails_env role
-    # app_deploy.sh rails_env role
+    @app.update
   end
 end

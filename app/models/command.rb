@@ -2,12 +2,10 @@ class Command
   ROOT_DIR = './workdir/apps'
   @cmd_stack
 
-  def initialize( app )
+  def initialize( app, go_home = true )
     if app.present?
-      @home = "#{app}"
-      @full_path = "#{ROOT_DIR}/#{home}"
-      %x(mkdir #{@full_path}; cd #{@full_path})
-      @cmd_stack = ["cd #{@full_path}"]
+      @cmd_stack = []
+      @cmd_stack << "cd #{app.full_path}" if go_home
     else
       raise 'App must be informed!'
     end
@@ -18,10 +16,14 @@ class Command
   end
 
   def list
-    @cmd_stack.join("\n")
+    @cmd_stack.join("; ")
   end
 
   def run
-    %x(self.list)
+    cmd = "#{self.list} 2>&1"
+    puts 'About to run:'
+    puts cmd
+    response = %x[#{cmd}]
+    response
   end
 end
