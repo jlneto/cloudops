@@ -38,10 +38,10 @@ class App < ActiveRecord::Base
   end
 
   def update(env = 'staging')
-    cmd = Command.new(self)
-    cmd.add "./app_pack.sh #{env}"
-    cmd.add "./app_deploy.sh #{env}"
-    cmd.run
+    # cmd = Command.new(self)
+    # cmd.add "./app_pack.sh #{env}"
+    # cmd.add "./app_deploy.sh #{env}"
+    # cmd.run
   end
 
 

@@ -1,8 +1,7 @@
 Rails.application.routes.draw do
 
-  get 'ccde/setup'
-  get 'ccde/status'
-  get 'ccde/update'
+  get 'ccde/show'
+  get 'ccde/execute'
   get 'home/index'
 
   resources :apps do
@@ -20,7 +19,7 @@ Rails.application.routes.draw do
     get :job_finished, :on => :member
   end
 
-  root to: 'ccde#status'
+  root to: 'ccde#show'
 
   devise_for :users
   resources :users

@@ -1,0 +1,12 @@
+%h1= @app.name
+
+- if @app.ok?
+  = link_to 'Status', ccde_execute_path(do: :status)
+  |
+  = link_to 'Update', ccde_execute_path(do: :update), data: { confirm: 'Confirma a atualização desse aplicativo?' }
+- else
+  %p
+    O Ambiente desse aplicativo ainda não foi criado.<br/>
+    Clique no link de setup abaixo para criar a sua área de trabalho nesse servidor:
+  %p= @app.full_path
+  %p= link_to 'Setup', ccde_execute_path(do: :setup), data: { confirm: 'Confirma a criação da área de trabalho desse aplicativo?' }
